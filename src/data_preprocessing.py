@@ -3,47 +3,39 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from src.data_io import load_raw, save_processed
+
 
 """
 Módulo responsável pela preparação dos dados.
 
-Aqui são realizadas etapas como remoção de outliers,
-tratamento de valores faltantes e organização do dataset.
-Os dados processados são salvos em arquivos CSV para uso
-posterior na análise exploratória e na modelagem.
+Etapas:
+- Remoção de outliers
+- Tratamento de valores ausentes
+- Geração do dataset final limpo
 """
 
 
-# Definindo os caminhos para os dados
-RAW_PATH = "data/raw/"
-PROCESSED_PATH = "data/processed/"
-
-
-# Função para carregar os dados
-def load_csv(path, filename):
-    df = pd.read_csv(path + filename)
-    return df
-
-
-# Função para remover outliers
 def remove_outliers(df):
-    drop_index = df[(df['Gr Liv Area']>4000) & (df['SalePrice']<400000)].index
-    df = df.drop(drop_index)
+    """Remove observações com área muito grande e preço anormalmente baixo."""
+
+    mask = (df['Gr Liv Area'] > 4000) & (df['SalePrice'] < 400000)
+    df = df.drop(df[mask].index)
+
     return df
 
 
-# Função para salvar os dados sem outliers
-def save_data(df, path, filename):
-    df.to_csv(path + filename, index=False)
-
-
-# Função para lidar com dados ausentes
 def handle_missing_data(df):
-    df = df.drop('PID', axis=1)
+    """Aplica tratamento de valores ausentes."""
 
-    df = df.dropna(axis=0,subset=['Electrical', 'Garage Cars'])
+    # Remover coluna de identificação
+    df = df.drop(columns='PID')
 
-    # BSMT COLUNAS NUMERICAS --> fillna 0
+    # Remover linhas com dados críticos faltantes
+    df = df.dropna(subset=['Electrical', 'Garage Cars'])
+
+    # Basement 
+
     bsmt_num_cols = [
         'Bsmt Full Bath',
         'Bsmt Half Bath',
@@ -52,34 +44,64 @@ def handle_missing_data(df):
         'BsmtFin SF 2',
         'Total Bsmt SF'
     ]
+
     df[bsmt_num_cols] = df[bsmt_num_cols].fillna(0)
 
-    # BSMT COLUNAS STRING --> fillna 'None'
-    bsmt_str_cols =  [
+    bsmt_str_cols = [
         'Bsmt Qual',
         'Bsmt Cond',
         'Bsmt Exposure',
         'BsmtFin Type 1',
         'BsmtFin Type 2'
     ]
+
     df[bsmt_str_cols] = df[bsmt_str_cols].fillna('None')
+
+    # Masonry Veneer 
 
     df['Mas Vnr Type'] = df['Mas Vnr Type'].fillna('None')
     df['Mas Vnr Area'] = df['Mas Vnr Area'].fillna(0)
 
+    # Garage 
+
+    garage_cols = [
+        'Garage Type',
+        'Garage Qual',
+        'Garage Finish',
+        'Garage Cond'
+    ]
+
+    df[garage_cols] = df[garage_cols].fillna('None')
+    df['Garage Yr Blt'] = df['Garage Yr Blt'].fillna(0)
+
+    #  Colunas com muitos NaN 
+
+    df = df.drop(columns=['Pool QC', 'Misc Feature', 'Alley', 'Fence'])
+
+    df['Fireplace Qu'] = df['Fireplace Qu'].fillna('None')
+
+    # Lot Frontage 
+    # Preencher usando mediana do bairro
+
+    median_by_neigh = df.groupby('Neighborhood')['Lot Frontage'].transform('median')
+    df['Lot Frontage'] = df['Lot Frontage'].fillna(median_by_neigh)
+
+    # Caso ainda reste missing
+    df['Lot Frontage'] = df['Lot Frontage'].fillna(0)
+
     return df
 
 
-# Função principal para preparar os dados
 def prepare_data():
+    # 1 Carregar dados brutos
+    df = load_raw("Ames_Housing_Data.csv")
 
-    df = load_csv(RAW_PATH, "Ames_Housing_Data.csv")
+    # 2 Remover outliers
     df = remove_outliers(df)
-    save_data(df, PROCESSED_PATH, "Ames_outliers_removed.csv")
+    save_processed(df, "Ames_outliers_removed.csv")
 
-    df = load_csv(PROCESSED_PATH, "Ames_outliers_removed.csv")
+    # 3 Tratar valores ausentes
     df = handle_missing_data(df)
-    save_data(df, PROCESSED_PATH, "Ames_NO_missing_data.csv")
+    save_processed(df, "Ames_NO_missing_data.csv")
 
-    # Continua
     return df
