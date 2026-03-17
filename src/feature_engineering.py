@@ -18,6 +18,9 @@ preparando os dados para os modelos de machine learning.
 def create_dummies(df):
     """Converte variáveis categóricas em variáveis dummies."""
 
+    # Converter 'MS SubClass' para string, pois é uma variável categórica
+    df['MS SubClass'] = df['MS SubClass'].astype(str)
+
     # Separar colunas categóricas e numéricas
     df_object = df.select_dtypes(include='object')
     df_numeric = df.select_dtypes(exclude='object')
