@@ -1,0 +1,1 @@
+# Se tivessemos dados novos poderiamos usar este módulo para fazer as previsões usando o modelo treinado.
