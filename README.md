@@ -1,183 +1,248 @@
-Ames Housing Price Prediction
-Sobre o Projeto
+<div align="center">
 
-Este projeto tem como objetivo prever o preço de imóveis utilizando o dataset Ames Housing, aplicando técnicas de análise de dados e machine learning.
+<br/>
 
-O foco principal é construir um pipeline completo, desde o tratamento dos dados até o treinamento e salvamento do modelo.
+# 🏠 Ames Housing Price Prediction
 
-Objetivos
+### Previsão de Preços de Imóveis com Machine Learning
 
-Analisar e entender os dados (EDA)
+<br/>
 
-Tratar valores ausentes e inconsistentes
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-Criar novas variáveis relevantes
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow?style=for-the-badge)
+![Tipo](https://img.shields.io/badge/tipo-portfólio-blueviolet?style=for-the-badge)
+![Licença](https://img.shields.io/badge/licença-MIT-green?style=for-the-badge)
 
-Treinar um modelo de regressão
+</div>
 
-Avaliar o desempenho
+---
 
-Salvar o modelo final
+## 📌 Sobre o Projeto
 
-Estrutura do Projeto
-├── data/
-│   ├── raw/
-│   └── processed/
+Este projeto tem como objetivo **prever o preço de imóveis** utilizando o famoso dataset **Ames Housing**, aplicando técnicas de análise exploratória, engenharia de features e machine learning.
+
+O foco principal é construir um **pipeline completo e modular** — desde o tratamento dos dados brutos até o treinamento, avaliação e salvamento do modelo final. Desenvolvido como projeto de aprendizado e portfólio.
+
+---
+
+## 🎯 Objetivos
+
+| Etapa | Descrição | Status |
+|-------|-----------|--------|
+| 📊 EDA | Analisar e entender os dados | ✅ |
+| 🧹 Limpeza | Tratar valores ausentes e inconsistentes | ✅ |
+| ⚙️ Features | Criar novas variáveis relevantes | ✅ |
+| 🤖 Modelagem | Treinar modelo de regressão | ✅ |
+| 📈 Avaliação | Medir desempenho com métricas | ✅ |
+| 💾 Deploy | Salvar o modelo final | ✅ |
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```
+ames-housing/
 │
-├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_preprocessing.ipynb
-│   └── 03_modeling.ipynb
+├── 📁 data/
+│   ├── raw/                    # Dados originais sem modificação
+│   └── processed/              # Dados tratados e prontos para uso
 │
-├── src/
-│   ├── data_preprocessing.py
-│   ├── feature_engineering.py
-│   ├── train_model.py
-│   └── data_io.py
+├── 📓 notebooks/
+│   ├── 01_eda.ipynb            # Análise Exploratória
+│   ├── 02_preprocessing.ipynb  # Pré-processamento
+│   └── 03_modeling.ipynb       # Modelagem e avaliação
 │
-├── main.py
-├── models/
-├── requirements.txt
-└── README.md
-Dataset
+├── 🐍 src/
+│   ├── data_preprocessing.py   # Tratamento de dados
+│   ├── feature_engineering.py  # Engenharia de features
+│   ├── train_model.py          # Treinamento do modelo
+│   └── data_io.py              # I/O de dados e modelos
+│
+├── 💾 models/                  # Modelos treinados salvos
+├── 🚀 main.py                  # Pipeline principal
+├── 📋 requirements.txt
+└── 📄 README.md
+```
 
-O dataset Ames Housing contém informações detalhadas sobre imóveis, incluindo:
+---
 
-Área do terreno
+## 🗃️ Dataset
 
-Qualidade da construção
+O **Ames Housing Dataset** é um dos datasets mais completos para problemas de regressão, contendo mais de 80 variáveis descritivas sobre imóveis residenciais em Ames, Iowa (EUA).
 
-Ano de construção
+<details>
+<summary><strong>📋 Variáveis incluídas (clique para expandir)</strong></summary>
 
-Número de quartos
+<br/>
 
-Garagem, piscina, entre outros
+- 🏗️ Área do terreno e área construída
+- 🌟 Qualidade geral da construção e acabamento
+- 📅 Ano de construção e última reforma
+- 🛏️ Número de quartos, banheiros e andares
+- 🚗 Garagem (tipo, capacidade e condição)
+- 🏊 Piscina, varanda e outros extras
+- 📍 Vizinhança e zoneamento
 
-Ele é amplamente utilizado em problemas de regressão.
+</details>
 
-Tecnologias Utilizadas
+---
 
-Python
+## 🛠️ Tecnologias Utilizadas
 
-Pandas
+<div align="center">
 
-NumPy
+| Tecnologia | Uso |
+|------------|-----|
+| **Python 3.10+** | Linguagem principal |
+| **Pandas** | Manipulação e análise de dados |
+| **NumPy** | Operações numéricas |
+| **Scikit-learn** | Modelagem e avaliação |
+| **Joblib** | Serialização do modelo |
+| **Jupyter Notebook** | Exploração e prototipagem |
 
-Scikit-learn
+</div>
 
-Joblib
+---
 
-Notebooks
-01_eda.ipynb
+## 📓 Notebooks
 
-Responsável pela análise exploratória dos dados:
+### `01_eda.ipynb` — Análise Exploratória
+> Entendendo o dataset antes de qualquer transformação.
 
-Visualização das variáveis
+- Visualização das distribuições de variáveis
+- Identificação e análise de valores nulos
+- Distribuição e outliers no preço (`SalePrice`)
+- Mapa de correlações entre variáveis
 
-Identificação de valores nulos
+### `02_preprocessing.ipynb` — Pré-processamento
+> Preparando os dados para o modelo.
 
-Distribuição dos preços
+- Preenchimento inteligente de valores nulos
+- Conversão e padronização de variáveis categóricas
+- Remoção de outliers (quando aplicável)
 
-Correlação entre variáveis
+### `03_modeling.ipynb` — Modelagem
+> Onde a mágica acontece.
 
-02_preprocessing.ipynb
+- Testes com diferentes algoritmos de regressão
+- Comparação de desempenho por métricas
+- Seleção e ajuste do modelo final
 
-Focado no tratamento dos dados:
+---
 
-Preenchimento de valores nulos
+## 🔩 Módulos (`src/`)
 
-Conversão de variáveis categóricas
+```python
+# data_preprocessing.py
+# → Tratamento de nulos, padronização de colunas, preparação inicial
 
-Remoção de outliers (quando aplicável)
+# feature_engineering.py
+# → Criação de novas features, encoding categórico, seleção de variáveis
 
-03_modeling.ipynb
+# train_model.py
+# → Split treino/teste, Lasso Regression, avaliação com RMSE e R²
 
-Testes de modelos:
+# data_io.py
+# → Carregamento de dados, salvamento do modelo com joblib
+```
 
-Treinamento de diferentes algoritmos
+---
 
-Comparação de desempenho
+## 🚀 Pipeline Principal
 
-Escolha do modelo final
+O arquivo `main.py` executa todo o fluxo de forma sequencial e modular:
 
-Estrutura do Código (src)
-data_preprocessing.py
+```python
+from src.data_io import load_data, save_model
+from src.data_preprocessing import preprocess_data
+from src.feature_engineering import create_features
+from src.train_model import train_model
 
-Tratamento de valores ausentes
-
-Padronização de colunas
-
-Preparação inicial dos dados
-
-feature_engineering.py
-
-Criação de novas features
-
-Encoding de variáveis categóricas
-
-Seleção de variáveis relevantes
-
-train_model.py
-
-Divisão treino/teste
-
-Treinamento com Lasso Regression
-
-Avaliação com RMSE e R²
-
-data_io.py
-
-Carregamento de dados
-
-Salvamento do modelo com joblib
-
-Pipeline Principal
-main.py
-
-Arquivo responsável por executar todo o fluxo do projeto.
-
-Etapas:
-
-Carregar os dados
-
-Pré-processamento
-
-Feature engineering
-
-Treinamento
-
-Salvamento
-
-Fluxo simplificado:
-
-data = load_data()
-data = preprocess_data(data)
-data = create_features(data)
+# Pipeline completo
+data  = load_data()
+data  = preprocess_data(data)
+data  = create_features(data)
 model = train_model(data)
 save_model(model)
-Como Executar
-1. Clonar o projeto
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
-2. Instalar dependências
+```
+
+```
+📥 Carregar dados
+     ↓
+🧹 Pré-processamento
+     ↓
+⚙️  Feature Engineering
+     ↓
+🤖 Treinamento (Lasso Regression)
+     ↓
+💾 Salvar modelo → models/
+```
+
+---
+
+## ▶️ Como Executar
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/ames-housing.git
+cd ames-housing
+```
+
+### 2. Crie um ambiente virtual (recomendado)
+
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux/Mac
+venv\Scripts\activate         # Windows
+```
+
+### 3. Instale as dependências
+
+```bash
 pip install -r requirements.txt
-3. Executar
+```
+
+### 4. Execute o pipeline
+
+```bash
 python main.py
-Modelo Treinado
+```
 
-O modelo final é salvo em:
+> O modelo treinado será salvo automaticamente em `models/`.
 
-models/
-Possíveis Melhorias
+---
 
-Testar modelos como Random Forest e XGBoost
+## 🔮 Próximos Passos
 
-Aplicar validação cruzada
+- [ ] 🌲 Testar **Random Forest** e **XGBoost**
+- [ ] 🔁 Aplicar **validação cruzada** (k-fold)
+- [ ] 🌐 Criar uma **API com FastAPI**
+- [ ] ☁️ **Deploy** do modelo em nuvem
+- [ ] 📊 Dashboard interativo com Streamlit
 
-Criar API (Flask ou FastAPI)
+---
 
-Deploy do modelo
+## 👤 Autor
 
-Autor
+<div align="center">
 
-Alessandro Moreira Cecilio
+**Alessandro Moreira Cecilio**
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/seu-usuario)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
+
+*Projeto desenvolvido para aprendizado e portfólio em Ciência de Dados.*
+
+</div>
+
+---
+
+<div align="center">
+  <sub>Feito com 🤍 e muito Python</sub>
+</div>
