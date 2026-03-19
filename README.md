@@ -14,7 +14,7 @@
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-concluído-blue?style=for-the-badge)
 ![Tipo](https://img.shields.io/badge/tipo-portfólio-blueviolet?style=for-the-badge)
 ![Licença](https://img.shields.io/badge/licença-MIT-green?style=for-the-badge)
 
