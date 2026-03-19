@@ -190,8 +190,8 @@ save_model(model)
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/ames-housing.git
-cd ames-housing
+git clone https://github.com/AleCecilio/ames_housing_price_prediction.git
+cd ames_housing_price_prediction
 ```
 
 ### 2. Crie um ambiente virtual (recomendado)
@@ -220,11 +220,10 @@ python main.py
 
 ## 🔮 Próximos Passos
 
-- [ ] 🌲 Testar **Random Forest** e **XGBoost**
-- [ ] 🔁 Aplicar **validação cruzada** (k-fold)
-- [ ] 🌐 Criar uma **API com FastAPI**
-- [ ] ☁️ **Deploy** do modelo em nuvem
-- [ ] 📊 Dashboard interativo com Streamlit
+### Features
+- [ ] 🔍 Aplicar **seleção de features** com `SelectFromModel` ou `RFE`
+- [ ] 🔄 Testar transformação logarítmica em `SalePrice` para reduzir skewness
+- [ ] 🧪 Investigar **interações entre variáveis** (ex: `QualidadeGeral × AreaTotal`)
 
 ---
 
